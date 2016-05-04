@@ -2,4 +2,4 @@
 
 Written in Markdown using stackedit.io.
 
-Read the book [here](http://stackedit.io/viewer!#url=https://raw.githubusercontent.com/euwbah/java-from-the-top-down/master/book.md)
+Read the book [here](https://stackedit.io/viewer#!url=http://raw.githubusercontent.com/euwbah/java-from-the-top-down/master/book.md)
