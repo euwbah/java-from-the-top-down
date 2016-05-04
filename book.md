@@ -251,6 +251,8 @@ Notice how the same method `add()` and `get(int index)` can be used to add to, a
 
 ###2. Programming Terms
 
+You will see these same terminology used in most programming languages. It's like a programmers' _lingua franca_ kinda' thing.
+
 ####Condition
 A **condition** refers to a [boolean](#boolean) value that is used to [select which path should the code follow](#syntax-and-flow-of-java-structures).
 
@@ -259,8 +261,8 @@ Perhaps the most basic usage would be the [if-statement](#if-statement)
 ####Parameter
 A **parameter** is always **passed** to a [**method**](#method).
 
-####Method
-A **method** is just a _fancy_ [OOP](#1-define-oop) way of saying ['function']
+####Function
+A function is a block of code which has a name to it. A function always _belongs_ to an object. See [how to make a function].
 
 ####Zero-Index
 **Lists and Arrays in Java start counting from 0, instead of 1**
@@ -280,6 +282,45 @@ boolean thisIsNotCorrect = from1To5[3] == 3;//False
 ```
 
 This is because arrays and lists are **zero-indexed**. So even though 1 is the 1<sup>st</sup> number from the list, that very same number has an index of `0`, because the **index starts counting from 0**.
+
+####Return
+In programming, you use the word 'return' the same way you use the phrase 'gives you' or 'evaluates to be'.
+
+Using this code as an example --
+```java
+int x = 3;
+double y = Math.pow(x, 2);
+```
+You verbalize it as:
+> Math.pow(x, 2) **returns** the value of 9.
+
+Most of the time, this word is used to describe the final result of a [function](#function) like this:
+> The function `addOne(int x)` **returns** the value of x plus one
+
+In fact, the word is attributed to [functions](#function) so much that java has made the word `return` a [keyword](#keywords) to mean exactly what it means.
+
+```java
+public int addOne(int x) {
+	return x + 1;
+}
+```
+
+However, programmers also use this term casually to say things like:
+> 3 * 4 **returns** 12
+> this method **returns** an [integer](#int)
+
+to just mean *'equals'* or *'gives you'*.
+
+###3. Java Terms
+####Native Class
+Native Classes are the [objects] which come with Java itself. You don't need to declare or assign them to anything, you just use them. A good example would be this [method](#method):
+```java
+System.out.println("Hi");
+```
+All you did was use that method, and it displayed something. No one cares how, and nobody cares why.
+
+####Method
+A **method** is just a _fancy_ [OOP](#1-define-oop) way of saying ['function'](#function)
 
 ##Chapter I : define Java
 
@@ -329,7 +370,7 @@ println->out: Belongs to
 
 Putting into context,
 
-`System.out.println` simply means: _System's out's println_.
+`System.out.println` simply means: _System's out's println_ -- which is a [native](#native-java) [method](#method) which displays text on a [console](https://en.wikipedia.org/wiki/Console_application).
 
 `println` belongs to `out`, that belongs to `System`. 
 
@@ -415,7 +456,81 @@ Now it's good to know a few things about this 'entry point' first:
 
 3. It must always be called `main`. There's a reason why it's called the `main` method.
 
-4. `String[] args` must always be there. This is because, when you run any program, you can choose to run it in default mode, or you can run it in some special modes. When running in a 'special mode', `args` will contain a list of 'settings' that you must use in your code so that it will have an effect on your program. Not that you will _actually_ use it though...
+4. `String[] args` must always be there. This is because, when you run any program, you can choose to run it in default mode, or you can run it in some special modes. When running in a 'special mode', `args` will contain a list of 'settings' that you will use in your code if you want it to have an effect on your program. Not that you will _actually_ use it though...
+
+Now that we know where to start writing the program, let's write some code!
+
+...
+
+Or _not._
+
+----
+
+##1. How to create a .java file.
+
+Before you can start adding lines to the `main()` method, we need to find out where to put this. All Java source code are in .java files, and there are three things to take note of when creating these Java files.
+
+1. All the source code will be in a folder marked as source by the IDE. If you're using NetBeans IDE, you can find where by going to File > Project Properties > Sources > Source Package Folders. The path of the source code file will usually be `projectName/src`. 
+
+2. The path of the code file must be reflected in the source. This means that if the file is in `projectName/src/hello/welcome/to/sparta`, the first line of code **must** be
+	```java
+	package hello.welcome.to.sparta;
+	```
+	Note that projectName and src is not within that line of the code, because they are already configured in step 1.
+
+3. Every .java code file must have a [`public`] [`class`] (you'll know what that is soon). Also, this `public class` **must** have the same name as the .java file. That means, if your code file is called DerpityHerp.java, your class must be defined like this:
+	```java
+	public class DerpityHerp {
+	
+	}
+	```
+
+---
+
+Putting all of this together, if you want to start writing some code in a file called `ThisIsSparta.java`, and that file can be found in `.../Spartacus/src/welcome/to/sparta`, you will need to do this:
+
+```java
+package welcome.to.sparta;
+
+public class ThisIsSparta {
+	public static void main(String[] args) {
+	}
+}
+```
+
+Simple enough.
+
+----
+##2. Start writing some spartan code
+Now that we can create a very medieval sounding .java file, let's start by displaying a very classic line indeed.
+
+**THE CODE:**
+```java 8
+package welcome.to.sparta;
+
+public class ThisIsSparta {
+	public static void main(String[] args) {
+		System.out.println("THIS. IS. SPARTAAA!!");
+	}
+}
+```
+
+####What it does
+
+The console displays
+
+```text
+THIS. IS. SPARTAAA!!
+```
+
+(If you had already read Chapter 1, there shouldn't be anything here that surprises you, but just in case you haven't -- [click here](#1-define-oop).)
+
+####Things to take note:
+
+- `"THIS. IS. SPARTAAA!!"` is called a [String Literal](#
+- `System.out.println(....` displays 
+
+
 
 # Appendix
 
@@ -434,12 +549,18 @@ These keywords are used to define variables
 
 [`byte`](#byte)
 
+----
+
 ##Literals
 
-#####Boolean Literal
+#####[Boolean](#boolean) Literal
 There are only two values. `true` for true, and `false` for false.
+```java
+boolean yep = true;
+boolean nuhp = false;
+```
 
-#####Char Literal
+#####[Char](#char) Literal
 If you want to _literally_ put in a character, use single quotes:
 ```java
 char A = 'A'
@@ -450,12 +571,28 @@ char alsoA = (char) 65
 ```
 You can see which number relates to which char in an [ASCII Table](http://www.asciitable.com/)
 
+#####[Int](#int) Literal
+The integer's literal format can be used for [bytes](#byte), [shorts](#short), [ints](#int), and [longs](#long).
+
+An integer literal is simply just a number without a decimal point -- as in:
+
+```java
+int x = 13379001;
+byte y = 34;
+```
+
+However, **don't think that negative integer literals are still considered literals!** This may sound very counter-intuitive, but there are no such things as 'negative-number literals' in Java. Instead, they are regarded as [expressions](#expressions).
+
+The negative number `-1337` is actually made up of two different parts, the [unary] [negation operator] `-`, and the integer literal `1337`.
+
+----
+
 ##Primitive Types
 
 #####Boolean
 A `boolean` can only hold two different values.
-`true`: meaning that an [expression](#expressions) holds true
-`false`: meaning that an [expression](#expressions) is not true
+[`true`](#boolean-literal): meaning that an [expression](#expressions) holds true
+[`false`](#boolean-literal): meaning that an [expression](#expressions) is not true
 
 ```java
 boolean nope = (3 == 5);//this will be false, 3 is not 5
@@ -463,17 +600,30 @@ boolean yep = (3 < 5);//this will be true, 3 is less than 5
 ```
 
 #####Byte
-A `byte` is any number from -128 to 127, or mathematically speaking,
+A `byte` is any integer from -128 to 127, or mathematically speaking,
 $$range(-2^7, 2^7-1)$$
+It's literal format is the same as the [int literal](#int-literal)
 
 #####Short
-A `short` is any number from -32,768 to 32,767, or
+A `short` is any integer from -32,768 to 32,767, or
 $$range(-2^{15}, 2^{15} - 1)$$
+It's literal format is the same as the [int literal](#int-literal)
 
 #####Char
 A `char` is essentially a [`short`](#short), but the range is shifted such that the lowest number is 0. This means that a char can have a value from 0 to 65,535. Most of the time though, you won't be using `char`s this way, and you would use the [single quote to denote a `char` literal](#char-literal).
 
- 
+#####Int
+An `int` is any integer from --2,147,483,648 to 2,147,483,647, or
+$$range(-2^{31}, 2^{31} - 1)$$
+It's literal is simply a [number without a decimal point](#int-literal)
+
+#####Long
+A `long` is any integer from –9,223,372,036,854,775,808 to 9,223,372,036,854,775,807, or
+$$range(-2^{63}, 2^{63} - 1)$$
+It's literal format is the same as the [int literal](#int-literal)
+
+---- 
+
 ## Syntax and flow of Java structures 
 ### Loops 
 #### While
@@ -496,3 +646,23 @@ cond(no)->end
 
 ###Selections
 ####If-statement
+
+---
+
+##Operators
+
+Java operations can do either one, or both of the following actions:
+
+1. Return a new value
+2. Change a value
+
+For example, the assignment operator `=` changes a value
+
+```java
+int x = 1;
+x = 2;//x is changed to 2
+```
+The addition operator `+` returns a new value
+
+###Order of Operations
+As to how the 'BODMAS' rule applies to mathematics, a much more comprehensive '
