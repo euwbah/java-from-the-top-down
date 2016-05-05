@@ -530,8 +530,53 @@ THIS. IS. SPARTAAA!!
 - `"THIS. IS. SPARTAAA!!"` is called a [String Literal](#string-literal)
 - `System.out.println(....` is a [native](#native-java) [function](#function) that displays a [String](#string) in a console, which in this case, is the [String literal](#string-literal) mentioned above.
 
+-----
+###3. More drama plz
+Yes, yes I heard you.
 
+**THE CODE:**
+```java
+package welcome.to.sparta;
 
+public class ThisIsSparta {
+	public static void main(String[] args) {
+		System.out.print("THIS. ");
+		Thread.sleep(1000);
+		System.out.print("IS. ");
+		Thread.sleep(1000);
+		System.out.print("SPARTA");
+		Thread.sleep(100);
+		System.out.print("A");
+		Thread.sleep(100);
+		System.out.print("A");
+		Thread.sleep(100);
+		System.out.print("!");
+		Thread.sleep(100);
+		System.out.print("!");
+	}
+}
+```
+
+####What it does:
+The console starts out showing
+```text
+THIS. 
+```
+and 1 second later
+```text
+THIS. IS.
+```
+and 2 seconds later:
+```text
+THIS. IS. SPARTA
+```
+followed by a stream of `A` and `!` and ends up looking like this:
+```text
+THIS. IS. SPARTAAA!!
+```
+
+####Things to take note:
+- The code uses `System.out.print(..` instead of `System.out.println(..`. The difference is that `println` first displays the [String](#string) parameter in the console, then it moves to the next line, or in typing terms, 'presses the enter key'. Where as, `print` just displays 
 
 # Appendix
 
@@ -554,7 +599,7 @@ These keywords are used to define variables
 
 ##Literals
 
-Literals are values that are what they are. It's like how 1 equals 1 -- yes means yes; there's no explanation to it, and they are just themselves, and they are not made up of anything simpler.
+Literals are values that are what they are. It's like how 1 equals 1 -- yes means yes; there's no explanation to it, and they are just themselves, and they are not made up of anything simpler. Most literals are [Primitive values](#primitive-types), and the only exception is the [String](#string).
 
 #####[Boolean](#boolean) Literal
 There are only two values. `true` for true, and `false` for false.
@@ -587,6 +632,92 @@ byte y = 34;
 However, **don't think that negative integers are still considered literals!** This may sound very counter-intuitive, but there are no such things as 'negative-number literals' in Java. Instead, they are regarded as [expressions](#expressions).
 
 The negative number `-1337` is actually made up of two different parts, the [unary] [negation operator] `-`, and the integer literal `1337` -- hence it is an expression instead, not a single value literal.
+
+**If you really want to,** there are also more quirky and nerdy ways to punch in a number in Java. (It's ok if you don't understand the following section)
+
+For **octal**  numbers in **base 8**, put a `0` in front of the number. Because this is in base 8, you only have 8 digits -- so that means you can only use the digits
+`0 1 2 3 4 5 6 7`
+
+```java
+int _10 = 012;//This is 10 in decimal aka what you count with
+```
+
+For **binary** numbers, which is **base 2**, put a `0b` in front of the number. Once again, you only have 2 digits that you can use, `0` and `1`.
+
+```java
+int thisIsAlso10 = 0b1010;
+```
+
+And for **hexadecimal** numbers -- **base 16**, prefix  `0x` to the start of the number. You have 16 digits to choose from -- `0 1 2 3 4 5 6 7 8 9 a b c d e f`.
+
+```java
+int thisIsAnother10 = 0xA;
+```
+
+#####[Floating point](#float) literal
+A floating point literal is used for [floats](#float) and [doubles](#double). It just means 'number with a decimal point'.
+
+Very simply put, the only thing that separates a floating point literal from an integer literal is the decimal point.
+
+However, there is something you must note -- **if you want your number to be a float, you have to suffix an `f` to the end of the number. If not, that number will be, by default, a double. ** Also, if for whatever reason you want to **ensure** yourself that the number is a double, you can add a `d` behind the number.
+
+```java
+float x = 0.13f;//Good
+float y = 0.13;//Bad. 0.13 is a double, but y must be a float.
+
+double z = 0.13d//Good, but the d is not necessary
+double a = 0.13f//Bad.
+```
+
+Sometimes, you need a double or float without a decimal point, but you don't want it to be read as an [`int`](#int) either -- such as in this case:
+
+```java
+double wrong3Over5 = 3 / 5;//This is 0! I want it to be 0.6!!
+```
+
+This 'issue' arises because if you operate with two [ints](#int) you get an int, no matter what. And because an int cannot have decimal places, anything after the decimal places gets cut off, not even rounded up. In order to solve this, either one, or both, of the numbers must be a double or float. 
+
+```java
+double correctThreeFifth = 3.0 / 5;
+double anotherCorrectThreeFifth = 3 / 5d;
+
+float threeFifthFloat = 3.0f / 5;
+```
+
+Another thing to take note -- **If one or both of the values are a float, the result wil be a float, and vice versa, if one or both of the values are a double, the result will be a double. But what happens when you do this?**
+
+```java
+float threeFifthError = 3d / 5f;
+```
+
+You get an error. You cannot combine doubles with floats.
+
+Also, there are also other ways that you can make a double or a float:
+
+```java
+double d = .3;//This is 0.3 as a double
+double e = 153.;//This is 153 as a double
+float f = .3f;//This is 0.3 as a float
+float g = 153.f;//this is 153 as a float
+
+double h = 1337d//This is 1337 as a double
+float i = 1337f//This is 1337 as a float
+int j = 1337//If you leave out the d or f, it becomes an int
+```
+
+And you can also make use of the standard scientific form to make double and float literals:
+
+```java
+double x = 1e6//This is 1 million as a double
+float y = 1e6f//This is 1 million as a float
+double z = 1e-9//This is 1 billionth, or 0.000,000,001 as a double
+float a = 1e-9//Same thing as a float
+double b = 1.35e2//This is a pointless way to make 135 as a double
+double c = 135d//This is a smarter way
+```
+
+####String
+A String is the only non-[primitive type](#primitive-types) in Java to have a literal form -- and for this reason, many confuse Strings to be a Java primitive type, when it actually isn't.
 
 ----
 
@@ -625,7 +756,24 @@ A `long` is any integer from –9,223,372,036,854,775,808 to 9,223,372,036,854,7
 $$range(-2^{63}, 2^{63} - 1)$$
 It's literal format is the same as the [int literal](#int-literal)
 
----- 
+#####Float
+A `float` is a decimal number that can be accurately used from about $-3.4\times10^{38}$ to $3.4\times10^{38}$. However, it gets less accurate the larger the number. This is because floats (and [doubles](#double)) uses the standard scientific form to express numbers, that is:
+$$x \times 10^n; where\; 1 \le x \lt 10$$
+
+and due to the limitations of a float -- 23 bits of significand (that is $x$) and 8 bits of exponant (that is $n$),
+
+> The minimum value of x is limited to the smallest binary increment, which is `0b0000 0000 0000 0000 0000 001` (as many binary digits as the significand), and the range of the exponant is from $-2^{e-1}$ to $2^{e-1} - 1$ where $e$ is the exponant.
+
+and put in the most simple way, the number of decimal places the value $x$, which is called the _significand_, can have is limited. This means that you can have a really small number that is accurate to many decimal places, or you can have a really huge number and hundreds and thousands will get punted off in every direction every time you try adding or subtracting with that value
+
+It's literal format is the [floating point literal](#floating-point-literal), which is the same as a [double's](#double)
+
+#####Double
+A `double` is a decimal number that can be accurately used from about $-1.7\times10^{308}$ to $1.7\times10^{308}$. It works the same way as a [float](#float) -- and gets less accurate the greater the magnitude of the number, just that it has an significand consisting of 52 bits, and an exponent of 11 bits. (See [float](#float) to find out what that means)
+
+It has the same literal format as the [float](#float), which is the [floating point literal](#floating-point-literal)
+
+----
 
 ## Syntax and flow of Java structures 
 ### Loops 
