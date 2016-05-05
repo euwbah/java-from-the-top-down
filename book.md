@@ -716,8 +716,31 @@ double b = 1.35e2//This is a pointless way to make 135 as a double
 double c = 135d//This is a smarter way
 ```
 
-####String
+#####String
 A String is the only non-[primitive type](#primitive-types) in Java to have a literal form -- and for this reason, many confuse Strings to be a Java primitive type, when it actually isn't.
+
+Strings are very simple to create -- all you have to do is enclose some text within double quotes like this:
+```java
+"This is a String!"
+```
+
+But this comes with some problems -- What if you wanted to have some text on a new line?
+
+```java
+"This is
+a String!"
+```
+
+If you tried doing this, you would most probably get an error.
+Also, if you tried pressing the 'Enter' key inside a String in NetBeans IDE, this happens:
+```java
+"This is" +
+"a String!"
+```
+
+Which equates to become `"This isa String!"`. The lack of a space is not a typo.
+
+
 
 ----
 
