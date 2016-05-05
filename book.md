@@ -527,8 +527,9 @@ THIS. IS. SPARTAAA!!
 
 ####Things to take note:
 
-- `"THIS. IS. SPARTAAA!!"` is called a [String Literal](#
-- `System.out.println(....` displays 
+- `"THIS. IS. SPARTAAA!!"` is called a [String Literal](#string-literal)
+- `System.out.println(....` is a [native](#native-java) [function](#function) that displays a [String](#string) in a console, which in this case, is the [String literal](#string-literal) mentioned above.
+
 
 
 
@@ -552,6 +553,8 @@ These keywords are used to define variables
 ----
 
 ##Literals
+
+Literals are values that are what they are. It's like how 1 equals 1 -- yes means yes; there's no explanation to it, and they are just themselves, and they are not made up of anything simpler.
 
 #####[Boolean](#boolean) Literal
 There are only two values. `true` for true, and `false` for false.
@@ -581,9 +584,9 @@ int x = 13379001;
 byte y = 34;
 ```
 
-However, **don't think that negative integer literals are still considered literals!** This may sound very counter-intuitive, but there are no such things as 'negative-number literals' in Java. Instead, they are regarded as [expressions](#expressions).
+However, **don't think that negative integers are still considered literals!** This may sound very counter-intuitive, but there are no such things as 'negative-number literals' in Java. Instead, they are regarded as [expressions](#expressions).
 
-The negative number `-1337` is actually made up of two different parts, the [unary] [negation operator] `-`, and the integer literal `1337`.
+The negative number `-1337` is actually made up of two different parts, the [unary] [negation operator] `-`, and the integer literal `1337` -- hence it is an expression instead, not a single value literal.
 
 ----
 
