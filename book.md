@@ -16,7 +16,7 @@ Every part of this 'book' is based on, and will explain, a block of code, and no
 
 Whenever you are lost, go back and look at **THE CODE:** first, then continue from where you still had your bearings.
 
-##Chapter `null`: terminology
+#Chapter `null`: terminology
 
 Herein lies some words you should be familiar with. **DO NOT READ THIS SECTION. Only read it when a link in the book redirects you to a definition.** Please go back up to the [Table of Contents](#java-from-the-top-down) and click the next chapter.
 
@@ -322,7 +322,7 @@ All you did was use that method, and it displayed something. No one cares how, a
 ####Method
 A **method** is just a _fancy_ [OOP](#1-define-oop) way of saying ['function'](#function)
 
-##Chapter I : define Java
+#Chapter I : define Java
 
 > This chapter will teach you how to understand the mentality behind Java code. If you wish to start with something more practical and less mind-liquifying instead, go to Chapter II, but remember to come back when you feel ready :P
 
@@ -433,7 +433,7 @@ Now let's analyze [the code](#2-what-is-java) and see which categories can be fo
 
 -----
 
-#Chapter II: How to start writing Java
+#Chapter II: Start writing Java
 
 Java is, put in the most respectful manner possible, a beast. But like all beasts, there is always an entrance where everything starts.
 
@@ -576,7 +576,7 @@ THIS. IS. SPARTAAA!!
 ```
 
 ####Things to take note:
-- The code uses `System.out.print(..` instead of `System.out.println(..`. The difference is that `println` first displays the [String](#string) parameter in the console, then it moves to the next line, or in typing terms, 'presses the enter key'. Where as, `print` just displays 
+- The code uses `System.out.print(..` instead of `System.out.println(..`. The difference is that `println` first displays the [String](#string) parameter in the console, then it moves to the next line, or in typing terms, 'presses the enter key'. Whereas, `print` just displays 
 
 # Appendix
 
@@ -601,14 +601,14 @@ These keywords are used to define variables
 
 Literals are values that are what they are. It's like how 1 equals 1 -- yes means yes; there's no explanation to it, and they are just themselves, and they are not made up of anything simpler. Most literals are [Primitive values](#primitive-types), and the only exception is the [String](#string).
 
-#####[Boolean](#boolean) Literal
+####[Boolean](#boolean) Literal
 There are only two values. `true` for true, and `false` for false.
 ```java
 boolean yep = true;
 boolean nuhp = false;
 ```
 
-#####[Char](#char) Literal
+####[Char](#char) Literal
 If you want to _literally_ put in a character, use single quotes:
 ```java
 char A = 'A'
@@ -619,7 +619,7 @@ char alsoA = (char) 65
 ```
 You can see which number relates to which char in an [ASCII Table](http://www.asciitable.com/)
 
-#####[Int](#int) Literal
+####[Int](#int) Literal
 The integer's literal format can be used for [bytes](#byte), [shorts](#short), [ints](#int), and [longs](#long).
 
 An integer literal is simply just a number without a decimal point -- as in:
@@ -654,7 +654,7 @@ And for **hexadecimal** numbers -- **base 16**, prefix  `0x` to the start of the
 int thisIsAnother10 = 0xA;
 ```
 
-#####[Floating point](#float) literal
+####[Floating point](#float) literal
 A floating point literal is used for [floats](#float) and [doubles](#double). It just means 'number with a decimal point'.
 
 Very simply put, the only thing that separates a floating point literal from an integer literal is the decimal point.
@@ -716,31 +716,78 @@ double b = 1.35e2//This is a pointless way to make 135 as a double
 double c = 135d//This is a smarter way
 ```
 
-#####String
+####String
 A String is the only non-[primitive type](#primitive-types) in Java to have a literal form -- and for this reason, many confuse Strings to be a Java primitive type, when it actually isn't.
 
-Strings are very simple to create -- all you have to do is enclose some text within double quotes like this:
+String literals are very simple to create -- all you have to do is enclose some text within double quotes like this:
 ```java
 "This is a String!"
 ```
 
-But this comes with some problems -- What if you wanted to have some text on a new line?
+However, if you want to key in special characters, quotation marks like new lines or other weird characters not from the English language, you can't simply add them in like this:
 
 ```java
-"This is
-a String!"
+"Hello! I said, "Hi!".
+π♪"
 ```
 
-If you tried doing this, you would most probably get an error.
-Also, if you tried pressing the 'Enter' key inside a String in NetBeans IDE, this happens:
+You will end up with lots of horrific errors and red squiggly lines.
+
+Instead, it should look something like this:
 ```java
-"This is" +
-"a String!"
+"Hello! I said, \"Hi!\".\n\u0225\u0525"
 ```
 
-Which equates to become `"This isa String!"`. The lack of a space is not a typo.
+To get special characters, you need to use escape sequences. "Escape" meaning that you escape normal Java [Syntax](#syntax). A good example of this would be the in the double quotes here:
 
+```java
+"It went \"BOOM!\""//It went "BOOM!"
+```
 
+Because you have to start and end a string with these `"` double quotes, putting a double quote within the String itself would be impossible, because it would mean the the String literal has finished. In order to overcome this, the escape sequence `\"` is used to tell the String literal reading machine to not stop the string there -- but continue on and treat `\"` as `"` which would be impossible to type in a String if not for the escape sequence.
+
+#####Escape sequences
+
+Here is an exhaustive list of escape sequences:
+
+- `"\n"`: New line
+
+	```java
+	"A\nB" becomes
+	A
+	B
+	```
+- `"\t"`: Tab
+
+	```java
+	"A\tB" becomes
+	A	B
+	```
+- `"\b"`: Backspace
+
+	```java
+	"A\bB" becomes
+	B
+	```
+- `"\r"`: Carriage Return (hardly used)
+
+	```java
+	"Abcdef\refg" becomes
+	efgdef
+	```
+- `"\f"`: Formfeed
+	Goes to the next page
+	
+	```java
+	"A\fB" becomes
+	A
+	(next page)
+	B
+	```
+- `"\'"`: Single quote character
+	```java
+	"A
+	```
 
 ----
 
@@ -795,6 +842,9 @@ It's literal format is the [floating point literal](#floating-point-literal), wh
 A `double` is a decimal number that can be accurately used from about $-1.7\times10^{308}$ to $1.7\times10^{308}$. It works the same way as a [float](#float) -- and gets less accurate the greater the magnitude of the number, just that it has an significand consisting of 52 bits, and an exponent of 11 bits. (See [float](#float) to find out what that means)
 
 It has the same literal format as the [float](#float), which is the [floating point literal](#floating-point-literal)
+
+#####Not String!
+A `String` is **not** a Primitive Type - contrary to what you would expect. To see more about Strings, click [here](#string).
 
 ----
 
