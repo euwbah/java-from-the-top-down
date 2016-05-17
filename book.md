@@ -12,9 +12,9 @@ This psuedo-book/tutorial does not prove to be the _only_ way to learn, but it a
 
 #####How to read this psuedo-book:
 
-Every part of this 'book' is based on, and will explain, a block of code, and not the other way around. This means that the natural human learning process of experiencing first, then learning, will be utilised. This also means that it will be a little less organized compared to a standard book. 
+Every part of this 'book' is based on, and will explain, a block of code, and not the other way around. ⧸⧸This means that the natural human learning process of experiencing first, then learning, will be utilised. This also means that it will be a little less organized compared to a standard book. 
 
-Whenever you are lost, go back and look at **THE CODE:** first, then continue from where you still had your bearings.
+Whenever⧸⧸Whenever⧸⧸ you are lost, go back and look at ⧸⧸**THE CODE:** first, then continue from where you still had your bearings.
 
 #Chapter `null`: terminology
 
@@ -262,7 +262,46 @@ Perhaps the most basic usage would be the [if-statement](#if-statement)
 A **parameter** is always **passed** to a [**method**](#method).
 
 ####Function
-A function is a block of code which has a name to it. A function always _belongs_ to an object. See [how to make a function].
+A function is a block of code which has a name to it.
+Functions have three purposes:
+
+1. To simply run code
+2. To operate on values and data it is given, if any.
+3. To [return](#return) a value
+
+You may be thinking -- why do functions need to exist then? When I type code, am I not doing what is listed above?
+
+The whole idea of functions is to reduce the time spent typing the same code over and over again. For example, if I want to let the user type in 3 numbers and display the sum of the three, I need to do this:
+
+```java
+import javax.swing.JOptionPane;
+
+public class SoManyLinesOfCode {
+	public static void main(String[] args) {
+		int num1 = Integer.parseInt(JOptionPane.showInputDialog("Enter number 1"));
+		int num2 = Integer.parseInt(JOptionPane.showInputDialog("Enter number 2"));
+		int num3 = Integer.parseInt(JOptionPane.showInputDialog("Enter number 3"));
+		JOptionPane.showMessageDialog(null, "The sum of the three numbers is: " + (num1 + num2 + num3));
+	}
+}
+```
+
+Whereas, if I make use of a function to give me the numbers the user typed instead of re-typing `Integer.parseInt(JOptionPane.showI......`over again, it will look much nicer:
+
+```java
+public class CleanerCode {
+	public static void main(String[] args) {
+		int num1 = get("number 1");
+		int num2 = get("number 2");
+		int num3 = get("number 3");
+		JOptionPane.showMessageDialog(null, "The sum of the three numbers is: " + (num1 + num2 + num3));
+	}
+	
+	public static int get(String s) {
+		return Integer.valueOf(JOptionPane.showInputDialog("Enter " + s));
+	}
+}
+```
 
 ####Zero-Index
 **Lists and Arrays in Java start counting from 0, instead of 1**
@@ -322,11 +361,31 @@ All you did was use that method, and it displayed something. No one cares how, a
 ####Method
 A **method** is just a _fancy_ [OOP](#1-define-oop) way of saying ['function'](#function)
 
+####Type class
+(a.k.a. 'class' or 'type')
+Think of type classes the same way you would think of Pokémon **types** or character **classes** in RPGs.
+
+*Fire type, Mage class, Archer type, Dark type, Paladin class.*
+They all represent the type of the character -- which determines what abilities the character has, and what are the characters' attributes (such as **Max HP**, **Mana cap**, **Attack speed**).
+
+Similarly, the type class of a value (or [Object](#object) as you would say in Java) determines what kind of value it is.
+
+For example -- a integer value belongs to the `Integer` class, and it has the ability to be added, subtracted, etc...; and some text belongs to the `String` class, and it has the ability to be [concatenated](#concatenation), split, etc...
+
 #Chapter I : define Java
 
 > This chapter will teach you how to understand the mentality behind Java code. If you wish to start with something more practical and less mind-liquifying instead, go to Chapter II, but remember to come back when you feel ready :P
 
-**THE CODE:**
+**THE CODE:**⧸⧸the code first, then continue from where you still had your bearings.
+
+##Chapter `null`: terminology
+
+Herein lies some words you should be familiar with. You don't really need to read them now though - when a fancy word comes up, they will be linked here.
+
+#####
+
+##Chapter I : define Java
+⧸⧸
 ```java 8
 System.out.println("Welcome to Java!");
 ```
@@ -336,10 +395,13 @@ If you were to ask a fellow coder what would be the first thing that comes to yo
 - Coffee
 - OOP
 
-Coffee is really important. Coffee is love - coffee is life. Especially if you're a software engineer. But let's look at the second attribute.
+Coffee is really important. Coffee is love - coffee is life. Especially if ⧸⧸you're⧸⧸that person is⧸⧸ a software engineer. But let's look at the ⧸⧸second attribute.
 
 
-###1: define OOP
+###1:⧸⧸other one.
+
+
+####1:⧸⧸ define OOP
 
 > "OOP stands for Object Oriented Programming".
 
@@ -347,7 +409,7 @@ Coffee is really important. Coffee is love - coffee is life. Especially if you'r
 
 _Everything_ in Java is revolving around **Objects**. As a matter of fact, the only thing differentiating OOP languages and Mathematics is the concept of **Objects**.
 
-> Everything in Java is an 'object' as to how everything is a 'thing'
+> Everything in Java is an 'object' as to how everything ⧸⧸is a 'thing'
 
 So variables are objects, values are objects, even the type of an object itself is an object. Even the lines and statements of code **itself** can be objects (albeit a very complex one). **Everything** is an object.
 
@@ -529,6 +591,7 @@ THIS. IS. SPARTAAA!!
 
 - `"THIS. IS. SPARTAAA!!"` is called a [String Literal](#string-literal)
 - `System.out.println(....` is a [native](#native-java) [function](#function) that displays a [String](#string) in a console, which in this case, is the [String literal](#string-literal) mentioned above.
+- `;` is a **semicolon** and it is **very important**. All basic statements in Java must end with a semicolon. Find out what it does [here](#punctuation).
 
 -----
 ###3. More drama plz
@@ -576,7 +639,106 @@ THIS. IS. SPARTAAA!!
 ```
 
 ####Things to take note:
-- The code uses `System.out.print(..` instead of `System.out.println(..`. The difference is that `println` first displays the [String](#string) parameter in the console, then it moves to the next line, or in typing terms, 'presses the enter key'. Whereas, `print` just displays 
+- The code uses `System.out.print(..` instead of `System.out.println(..`. The difference is that `println` first displays the [String](#string) parameter in the console, then it moves to the next line, or in typing terms, 'presses the enter key'. Whereas, `print` just displays the string on the same line.
+In that respect, `System.out.println(string)` is the same as doing `System.out.print(string + "\n")` because `"\n"` is Java's way of 'pressing the enter key'. (Click [here](#string-literal) if you want to find out why)
+- `Thread.sleep(long milliseconds)` lets you pause the program for the given number of milliseconds.
+- The program flows downwards, not the other way around. Also, each line won't be executed at the same time. (I know this is common sense, but this is a **really** important thing to note)
+- Once again, the beloved `;` must be placed at the end of every single-line statement.
+
+----
+
+###4. Going deeper
+
+Now that you know how to get stuff showing up on your console, it's time dig a little deeper into what is _really_ going on.
+
+Let's talk about `System.out.println()`...
+
+Go ahead, type `System.out.printl` in NetBeans or IntelliJ IDEA -- purposely leave out the last `n`, and press `Ctrl` - `Space` to show up the auto-complete thingamajig. Now look at the autocomplete dialog box. You should see something like
+
+> System.out.println()
+> System.out.println(**Object** x)
+> System.out.println(**String** x)
+> System.out.println(**boolean** x)
+> System.out.println(**char** x)
+> System.out.println(**char[]** x)
+> System.out.println(**double** x)
+> System.out.println(**int** x)
+> System.out.println(**long** x)
+
+Now -- you may be wondering... Why on Earth are there so many `System.out.println`s?!
+
+Let me explain --
+Each one of those `System.out.println`s are called **method overloads**. A [**method**](#method) is just some code that has a name. So for example, instead of writing 1000 lines of code over and over again, you can save it with a name of your preference, and use that name to run that 1000 lines of code. We'll go through this in detail eventually.
+
+But let's look at **overloads**
+
+Notice how we used `System.out.println` like this earlier on?
+```java
+System.out.println("THIS. IS. SPARTAAA!!");
+```
+
+If you haven't known already, `"THIS. IS. SPARTAAA!!"` is a [String literal](#string-literal) -- which means that it is a `String` [type](#type-class) value. Notice how this fulfills one of the many `System.out.println`s listed above --- particularly this:
+
+> System.out.println(**String** x)
+
+This means that we are substituting the value of the String type `"THIS. IS. SPARTAAA!!"` as `String x` which is one of the method overloads listed when `ctrl`-`space` was pressed.
+
+By looking the other overloads, `System.out.println` can also accept not just a `String` [type](#type-class), but many others, like an [int](#int) that can be provided by an [int literal](#int-literal):
+
+```java
+System.out.println(1337);
+```
+
+Or even a [boolean](#boolean) that can be supplied by a [boolean literal](#boolean-literal):
+
+```java
+System.out.println(false);
+```
+
+However, don't think that all functions can take any and every [type](#type-class) of value like how `System.out.println` does!
+
+If you were to do this:
+
+```java
+Thread.sleep("hello");
+```
+
+There would definitely be an **error** -- and you'll know why when you press `ctrl`-`space` after typing `Thread.sl`. If everything is working well, you should see something like:
+
+> Thread.sleep(**long** millis)
+> Thread.sleep(**long** millis, **int** nano)
+
+A [long](#long) is a type of integer. Supplying a [`String`](#string) when `Thread.sleep` requires you to give it a `long` will only result in an error that looks something like this:
+
+> Error: (line, column) java: incompatible types: java.lang.String cannot be converted to long
+
+Which is really self-explanatory when you think about it -- `Thread.sleep` can only take a **`long`**, not a String!
+
+However, if you are observant enough, you would also notice that **another method overload** exists for `Thread.sleep`. This time, instead of seeing just one input value -- there are two! One for milliseconds and another for nanoseconds. In order to use this method overload, you have to make sure you give `Thread.sleep` two separate values like this:
+
+```java
+Thread.sleep(0, 1);
+```
+
+This will set `long millis` as 0, and `int nano` as 1. 
+As you can see, the comma separates the two values, so that Java knows you're giving `Thread.sleep` two values, not one. 
+
+Note that both [`long`](#long) and [`int`](#int) share the same [literal](#literals) -- which is the [integer literal](#int-literal), and so even though they are both different [types](#type-class), you can key them in the same way and Java will automatically sort it out for you.
+
+------
+
+###In summary --
+
+In this chapter, you've learned how to
+
+1. Type out the `main` function -- where the program starts
+2. Create a `.java` source code file
+3. Name your class correctly -- Same name as the code file
+4. Use `System.out.print` and `System.out.println`
+5. Hit `ctrl`-`space` when you are in doubt.
+6. Read the auto-complete dialog that appears when you hit `ctrl`-`space` and make use of it to see what [types](#type-class) of values you need to give a [method](#method)
+
+#Chapter 2:
 
 # Appendix
 
@@ -770,12 +932,13 @@ Here is an exhaustive list of escape sequences:
 	B
 	```
 - `"\r"`: Carriage Return (hardly used)
+	Moves the 'cursor' back to the start of the line and overwrites any existing characters from there.
 
 	```java
 	"Abcdef\refg" becomes
-	efgdef
+	efgdef ('efg' overwrites the first three characters 'Abc')
 	```
-- `"\f"`: Formfeed
+- `"\f"`: Formfeed (also hardly used)
 	Goes to the next page
 	
 	```java
@@ -785,13 +948,25 @@ Here is an exhaustive list of escape sequences:
 	B
 	```
 - `"\'"`: Single quote character
+	Mostly used for escaping the single quote char
+
 	```java
-	"A
+	char singleQuote = '\'';
 	```
+- `"\""`: Double quote character
+
+	```java
+	"And his name was \"JOHN CENAAAA!!!!\"" becomes
+	And his name was "JOHN CENAAAA!!!!"
+	```
+- `"\\"`: Backslash escape
+	Because the backslash is already used to denote an escape sequence - keying in a backslash would require an escaping of the escape character.
 
 ----
 
 ##Primitive Types
+
+Primitive [types](#type-class) are the most basic and fundamental types to Java. They cannot be simplified any further, nor do they contain any other values besides themselves. Think of these as how you would think of sub-atomic particles. All other [types](#type-class) are -- in it's most simplified and reduced form -- primitive types.
 
 #####Boolean
 A `boolean` can only hold two different values.
@@ -846,14 +1021,64 @@ It has the same literal format as the [float](#float), which is the [floating po
 #####Not String!
 A `String` is **not** a Primitive Type - contrary to what you would expect. To see more about Strings, click [here](#string).
 
+##Useful Java classes
+Here are some pre-loaded classes that you will use a lot in your adventures with Java...
+
+###String
+The `String` class, or more precisely, `java.lang.String`, is simply put, [char](#char)acters strung together in one line to form text. 
+
+It is commonly mistaken as a [Primitive Type](#primitive-types) because it has it's own [literal](#string-literal). However, do not get confused -- Strings are more than just a primitive type as even String literals carry their own [methods](#method) like these:
+
+```java
+String[] upperCaseWords = "Hello World!".toUpperCase().split(" ");
+```
+
+####Concatenation
+
+There are many things you can do with a String, but most important is String concatenation -- meaning 'Joining two strings together' which can be done in two ways:
+
+```java
+//The addition method
+String derpherp = "derp" + "herp"
+
+//The String.concat() method
+String another_derpherp = "derp".concat("herp");
+```
+
+The difference is that if you use the `.concat()` method, the value you want to join to the end of the String **must** be a String -- whereas if you use the `+` operator, you can do this:
+
+```java
+String whatIs3Times5 = "3 * 5 = " + (3 * 5);
+```
+
+and Java will automatically turn (3 * 5) into a String using the `String.valueOf()` method.
+
+Be very careful when you do String concatenation -- as all the `+` operators have the same precedence (see [Order of Operations]), it is operated from left to right. Doing this:
+
+```java
+System.out.println(3 + 5 + " is 35");
+```
+
+will give you
+> 8 is 35
+
+Because the [integers](#int) 3 and 5 are added first - to give 8, then the number 8 is converted into a String because `" is 35"` is a String which concatenates to (is added to the end of) the number 8.
+
+####List of String methods
+
 ----
 
 ## Syntax and flow of Java structures 
 ### Loops 
 #### While
 ```java 8 
-while (condition::boolean) {
-  //statements 
+//Syntax:
+while (condition::boolean) {code block}
+
+//E.g.:
+int x = 5;
+while (x > 0) {
+	System.out.println(x--);
 }
 ```
 
@@ -889,4 +1114,24 @@ x = 2;//x is changed to 2
 The addition operator `+` returns a new value
 
 ###Order of Operations
-As to how the 'BODMAS' rule applies to mathematics, a much more comprehensive '
+As to how the 'BODMAS' rule applies to mathematics, a much more comprehensive '⧸⧸in real life is a 'thing'
+
+That is all you have to know about _objects_
+
+#####how to [read the code](#charpter-i-define-java)
+
+`System.out.println`
+
+```sequence
+participant System
+participant out
+participant println
+out->System: Belongs to
+println->out: Belongs to
+```
+
+> NEW (SYNTAX)[]:
+
+####2: _What_ is Java?
+
+Java is made up of the following things⧸⧸
