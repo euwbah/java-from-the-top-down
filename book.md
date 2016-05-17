@@ -12,9 +12,9 @@ This psuedo-book/tutorial does not prove to be the _only_ way to learn, but it a
 
 #####How to read this psuedo-book:
 
-Every part of this 'book' is based on, and will explain, a block of code, and not the other way around. ⧸⧸This means that the natural human learning process of experiencing first, then learning, will be utilised. This also means that it will be a little less organized compared to a standard book. 
+Every part of this 'book' is based on, and will explain, a block of code, and not the other way around. This means that the natural human learning process of experiencing first, then learning, will be utilised. This also means that it will be a little less organized compared to a standard book. 
 
-Whenever⧸⧸Whenever⧸⧸ you are lost, go back and look at ⧸⧸**THE CODE:** first, then continue from where you still had your bearings.
+Whenever you are lost, go back and look at **THE CODE:** first, then continue from where you still had your bearings.
 
 #Chapter `null`: terminology
 
